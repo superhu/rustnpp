@@ -4,10 +4,10 @@
 
 extern crate libc;
 extern crate winapi;
-extern crate user32;
+// extern crate user32;
 extern crate core;
 
-use winapi::minwindef;
+use winapi::shared::minwindef;
 use def::{to_wide_chars,TCHAR,NppData,FuncItem};
 
 mod def;
@@ -42,7 +42,7 @@ pub extern "C" fn getName() -> * const TCHAR{
 
 #[no_mangle]
 pub extern "C" fn getFuncsArray( nbF: *mut i32) -> *const FuncItem{
-	unsafe { *nbF = std::mem::transmute( FUNC_ITEMS.len() ) };
+	unsafe { *nbF = std::mem::transmute_copy(&FUNC_ITEMS.len()) };
 	FUNC_ITEMS.as_ptr()
 }
 
@@ -63,5 +63,5 @@ pub extern "C" fn messageProc(
 		::MessageBox(NULL, "move", "", MB_OK);
 	}
 */
-	minwindef::TRUE
+	(1u8).into()
 }

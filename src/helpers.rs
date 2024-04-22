@@ -3,9 +3,9 @@ use std;
 use std::process::Command;
 use def::{from_wide_ptr,TCHAR};
 use plugindata::getNppHandle;
-use winapi::winuser;
-use winapi::minwindef;
-use user32::SendMessageW;
+use winapi::um::winuser;
+use winapi::shared::minwindef;
+use winapi::um::winuser::SendMessageW;
 
 const NPPM_GETFULLCURRENTPATH :minwindef::UINT = winuser::WM_USER + 3001;
 

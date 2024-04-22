@@ -1,6 +1,6 @@
 extern crate libc;
 extern crate winapi;
-extern crate user32;
+// extern crate user32;
 
 use def::{function_item_text,ShortcutKey,FuncItem,NppData};
 use std;
